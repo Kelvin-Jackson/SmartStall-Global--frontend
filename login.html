@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SmartStall Global - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4 px-6 flex flex-col md:flex-row md:items-center md:justify-between">
+    <h1 class="text-2xl font-bold text-green-600">SmartStall Global</h1>
+
+    <nav class="mt-2 md:mt-0 flex items-center space-x-6 text-sm md:text-base">
+      <a href="index.html" class="text-gray-700 hover:text-green-600">Home</a>
+      <a href="products.html" class="text-gray-700 hover:text-green-600">Products</a>
+      <a href="about.html" class="text-gray-700 hover:text-green-600">About</a>
+      <a href="contact.html" class="text-gray-700 hover:text-green-600">Contact</a>
+
+      <!-- Cart Icon -->
+      <a href="cart.html" class="relative text-gray-700 hover:text-green-600">
+        <i data-lucide="shopping-cart" class="w-5 h-5 inline"></i>
+        <span class="absolute -top-2 -right-2 bg-green-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center" id="cart-count">0</span>
+      </a>
+
+      <!-- Login/User Dropdown -->
+      <div class="relative group cursor-pointer">
+        <div class="flex items-center space-x-1 text-gray-700 hover:text-green-600">
+          <i data-lucide="user" class="w-5 h-5"></i>
+          <span id="login-label">Login</span>
+        </div>
+        <div id="user-dropdown" class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 shadow-md rounded-lg py-2 hidden group-hover:block z-50">
+          <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Profile</a>
+          <a href="orders.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
+          <button onclick="logout()" class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-4xl mx-auto mt-10 text-center">
+    <h2 class="text-3xl font-semibold mb-4 text-green-700">Welcome to SmartStall Global</h2>
+    <p class="text-lg text-gray-600">Fresh and affordable groceries at your convenience.</p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-12 py-6 bg-white text-center text-sm text-gray-500 border-t">
+    <p>&copy; 2025 SmartStall Global</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+
+    // Simulate login state
+    const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+
+    // Change UI based on login
+    if (!isLoggedIn) {
+      document.getElementById('user-dropdown').style.display = 'none';
+      document.getElementById('login-label').innerHTML = `<a href="login.html">Login</a>`;
+    }
+
+    function logout() {
+      localStorage.setItem('loggedIn', 'false');
+      location.reload();
+    }
+
+    // Optional: Update cart count
+    document.getElementById('cart-count').innerText = localStorage.getItem('cartCount') || '0';
+  </script>
+</body>
+</html>

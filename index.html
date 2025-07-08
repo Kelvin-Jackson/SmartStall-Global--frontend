@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SmartStall Global - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @keyframes slideUpFade {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-slide {
+      animation: slideUpFade 0.7s ease-in-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4 px-6 flex flex-col md:flex-row md:items-center md:justify-between">
+    <h1 class="text-2xl font-bold text-green-600">SmartStall Global</h1>
+    <nav class="mt-2 md:mt-0 space-x-4 text-sm md:text-base">
+      <a href="index.html" class="text-gray-700 hover:text-green-600">Home</a>
+      <a href="products.html" class="text-gray-700 hover:text-green-600">Products</a>
+      <a href="cart.html" class="text-gray-700 hover:text-green-600">Cart</a>
+      <a href="about.html" class="text-gray-700 hover:text-green-600">About</a>
+      <a href="contact.html" class="text-gray-700 hover:text-green-600">Contact</a>
+      <a href="login.html" class="text-gray-700 hover:text-green-600 font-semibold">Login</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto mt-10 px-4">
+    <section class="text-center mb-10">
+      <h2 class="text-4xl font-bold text-green-700 mb-4">Welcome to SmartStall Global</h2>
+      <p class="text-lg text-gray-600">Fresh and affordable groceries at your convenience.</p>
+    </section>
+
+    <!-- Product Cards -->
+    <section>
+      <h3 class="text-2xl font-semibold text-green-600 mb-6 text-center">Top Products</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 fade-slide">
+        <!-- PRODUCT TEMPLATE -->
+        <!-- Replace 'apples.jpg' etc. with actual image filenames in your 'images/' folder -->
+        <!-- You can duplicate this block and replace the content for each product -->
+        <!-- Example Product -->
+        <div class="bg-white rounded-xl shadow hover:shadow-lg p-4 transition-transform transform hover:-translate-y-2 text-center">
+          <img src="images/apples.jpg" alt="Apples" class="mx-auto mb-2 rounded-full w-24 h-24 object-cover" />
+          <h4 class="text-lg font-semibold text-gray-700 mb-2">Apples</h4>
+          <button onclick="openModal('Apples')" class="bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700">Quick View</button>
+          <a href="products.html" class="block mt-2 text-sm text-green-600 hover:underline">Learn More</a>
+        </div>
+
+        <!-- Repeat for all products -->
+        <div class="bg-white rounded-xl shadow p-4 transition-transform hover:-translate-y-2 text-center">
+          <img src="images/cereals.jpg" alt="Cereals" class="mx-auto mb-2 rounded-full w-24 h-24 object-cover" />
+          <h4 class="text-lg font-semibold">Cereals</h4>
+          <button onclick="openModal('Cereals')" class="bg-green-600 text-white px-3 py-1 rounded-full text-sm mt-1 hover:bg-green-700">Quick View</button>
+          <a href="products.html" class="block mt-2 text-sm text-green-600 hover:underline">Learn More</a>
+        </div>
+        <!-- Add more cards for grapes, kales, legumes, mangoes, etc. using the same structure -->
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-6 w-80 text-center relative">
+      <button onclick="closeModal()" class="absolute top-2 right-3 text-gray-600 text-xl">&times;</button>
+      <h2 id="modalTitle" class="text-2xl font-bold text-green-700 mb-2"></h2>
+      <p class="text-gray-600 mb-4">Get a fresh and healthy selection delivered right to your door. Visit our products page for more details.</p>
+      <a href="products.html" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">View Products</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-12 py-6 bg-white text-center text-sm text-gray-500 border-t">
+    <p>&copy; 2025 SmartStall Global</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function openModal(productName) {
+      document.getElementById('modalTitle').innerText = productName;
+      document.getElementById('modal').classList.remove('hidden');
+      document.getElementById('modal').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('flex');
+      document.getElementById('modal').classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
